@@ -2,10 +2,13 @@ import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthContext } from '../contexts/AuthContext';
 import getUserDataFromToken from '../services/userData';
+import { useNavigate } from 'react-router-dom';
+
 
 const Navbar = () => {
   const { auth, logout } = useContext(AuthContext);
   const userData = getUserDataFromToken();
+  const navigate = useNavigate();
 
   const commonLinks = (
     <li className="nav-item">
@@ -74,7 +77,10 @@ const Navbar = () => {
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
               <button
-                onClick={logout}
+                onClick={()=>{
+                  logout();
+                  navigate("/login");
+                }}
                 className="btn btn-outline-success fw-semibold"
               >
                 <i className="fas fa-sign-out-alt me-2"></i> Logout
