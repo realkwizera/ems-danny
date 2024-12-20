@@ -15,10 +15,13 @@ const generateToken = (user) => {
 
 const signup = async (req, res) => {
   try {
-    const { firstName, lastName, email, password,phone, dob, role } = req.body;
+    const { firstName, lastName, email, password,phone, dob } = req.body;
+    let role = "";
 
-    if (req.user.role !== 'Admin') {
-      return res.status(403).json({ message: 'Only Admins can add users' });
+    if (req.user?.role === 'Admin') {
+      role = "Manager"
+    }else{
+      role = "User"
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);

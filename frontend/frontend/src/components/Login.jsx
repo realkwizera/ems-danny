@@ -74,6 +74,9 @@ const Login = () => {
           <button type="submit" className="btn btn-success w-100">
             Login
           </button>
+          <div className='d-flex justify-content-between ms-3 me-3 mb-3 mt-3 text-decoration-none'>
+            <a href='/request-reset'>Reset password</a><a href='/sign-up'>Sign Up</a>
+          </div>
         </form>
       </div>
     </div>

@@ -10,10 +10,11 @@ import Navbar from './components/navbar';
 import EmployeeRegisterForm from './components/EmployeeRegisterForm';
 import SignUpForm from './components/SignUpForm';
 import Users from './components/Users';
+import RequestResetLink from './components/RequestResetLink';
 
 const App = () => {
-  const userData = getUserDataFromToken()
-  console.log(userData)
+  // const userData = getUserDataFromToken()
+  // console.log(userData)
   return (
     <AuthProvider>
       <Router>
@@ -33,6 +34,8 @@ const App = () => {
           <Route path='/view-employees' element={<><Navbar/><Employees/></>}/>
           <Route path='/register-employee' element={<><Navbar/><EmployeeRegisterForm/></>}/>
           <Route path='/register-user' element={<><Navbar/><SignUpForm/></>}/>
+          <Route path='/sign-up' element={<><SignUpForm/></>}/>
+          <Route path='/request-reset' element={<><RequestResetLink/></>}/>
           <Route path='/view-users' element={<><Navbar/><Users/></>}/>
         </Routes>
       </Router>

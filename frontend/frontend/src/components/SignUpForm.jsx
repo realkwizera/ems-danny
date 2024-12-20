@@ -9,7 +9,6 @@ const SignUpForm = () => {
     password: '',
     phone: '',
     dob: '',
-    role: '', // You can modify role based on your needs (Admin, User, etc.)
   });
 
   const [confirmPassword, setConfirmPassword] = useState(''); // Separate state for confirm password
@@ -38,7 +37,6 @@ const SignUpForm = () => {
       validationErrors.confirmPassword = 'Passwords do not match';
     if (!formData.phone) validationErrors.phone = 'Phone number is required';
     if (!formData.dob) validationErrors.dob = 'Date of birth is required';
-    if (!formData.role) validationErrors.role = 'Role is required';
 
     return validationErrors;
   };
@@ -68,13 +66,12 @@ const SignUpForm = () => {
           password: '',
           phone: '',
           dob: '',
-          role: '',
         });
 
         setErrors({});
       }
     } catch (error) {
-      console.log(error.response?.data?.message + error.response?.data?.message);
+      console.log(error.response?.data?.message || 'Error submitting form');
     } finally {
       setIsSubmitting(false);
     }
@@ -147,22 +144,6 @@ const SignUpForm = () => {
             onChange={handleChange}
           />
           {errors.dob && <div className="text-danger">{errors.dob}</div>}
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="role" className="form-label">Role</label>
-          <select
-            className="form-control"
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-          >
-            <option value="">Select Role</option>
-            <option value="Admin">Admin</option>
-            <option value="User">User</option>
-          </select>
-          {errors.role && <div className="text-danger">{errors.role}</div>}
         </div>
 
         <div className="mb-3">

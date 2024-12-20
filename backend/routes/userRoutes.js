@@ -11,7 +11,7 @@ const authenticateToken = require('../middleware/authMiddleware');
 const router = express.Router();
 
 router.post('/login', login);
-router.post('/signup',authenticateToken,signup);
+router.post('/signup',signup);
 router.get('/users', authenticateToken, getAllUsers);
 router.get('/employees', authenticateToken, getEmployees);
 
